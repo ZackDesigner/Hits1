@@ -1,125 +1,94 @@
-@charset "utf-8";
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body{
-    background-color: ;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  height: 100vh;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
-:root{
-    --color1:#928787;
+.center{
+  position: relative;
+  width: 770px;
+  left: -70px;
+  perspective: 1200px;
 }
-.cont-padre{
-    height: 500px;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+.center .img-card{
+  position: relative;
+  height: 350px;
+  width: 400px;
+  transform-style: preserve-3d;
+  transition: transform .5s ease-in;
 }
-.contenedor{
-   overflow: hidden;
-    height: 450px;
-    width: 21%;
-    margin: 0 15px;
+.img-card img{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
-.contenedor img{
-    height: 350px;
-    width: 100%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border-radius: 3px;
+.img-card img:nth-child(1){
+  transform: rotateX(-270deg) translateY(-175px);
+  transform-origin: top left;
 }
-.box-datos{
-    height: 235px;
-    width: 100%;
-    margin: auto;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    transition: .4s;
+.img-card img:nth-child(2){
+  transform: translateZ(175px);
 }
-.box-datos h1{
-    font-size: 1em;
-    color: var(--color1);
-    margin-bottom: -2px;
+.img-card img:nth-child(3){
+  transform: rotateX(-90deg) translateY(175px);
+  transform-origin: bottom center;
 }
-.box-datos h2{
-    font-size: .8em;
-    color:var(--color1);
+.img-card img:nth-child(4){
+  transform: rotateX(-180deg) translateY(350px) translateZ(175px);
+  transform-origin: bottom right;
 }
-.box-datos h1, h2{
-    font-family: sans-serif;
-    text-align: center;
+#tab-1:checked ~ .img-card{
+  transform: rotateX(-90deg);
 }
-.box-datos p{
-    text-align: justify;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1em;
-    width: 80%;
-    color: var(--color1);
+#tab-2:checked ~ .img-card{
+  transform: rotateX(0deg);
 }
-.box-datos span{
-    margin: 0 20px;
-    font-size: 1.2em;
+#tab-3:checked ~ .img-card{
+  transform: rotateX(90deg);
 }
-span:nth-child(1){
-    color: #3b5998;
+#tab-4:checked ~ .img-card{
+  transform: rotateX(180deg);
 }
-span:nth-child(2){
-    color: #55acee;
+.sliders{
+  position: absolute;
+  display: block;
+  right: 0;
+  top: -30px;
 }
-span:nth-child(3){
-    color: #bb0000;
+.sliders label{
+  height: 98px;
+  width: 110px;
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 6px 0;
+  border: 2px solid #2d4052;
 }
-.contenedor:hover .box-datos{
-    transform: translateY(-160px);
+.sliders label:nth-child(1){
+  margin-top: 0;
 }
-@media screen and (max-width:1024px){
-    .contenedor{
-        width: 30%;
-        margin: 15px;
-    }
+label img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  opacity: .9;
 }
-@media screen and (max-width:800px){
-    .contenedor{
-        width: 50%;
-        margin: 15px;
-    }
+label img:hover,
+#tab-1:checked ~ .sliders label:nth-child(1) img,
+#tab-2:checked ~ .sliders label:nth-child(2) img,
+#tab-3:checked ~ .sliders label:nth-child(3) img,
+#tab-4:checked ~ .sliders label:nth-child(4) img{
+  filter: grayscale(0);
+  opacity: 1;
 }
-@media screen and (max-width:768px){
-    .contenedor{
-        width: 40%;
-        margin: 15px;
-    }
+input{
+  display: none;
 }
-@media screen and (max-width:600px){
-    .contenedor{
-        width: 55%;
-        margin: 20px 10px;
-    }    
-}
-@media screen and (max-width:360px){
-    .contenedor{
-        width: 100%;
-        margin: 20px 0;
-    }
-    .contenedor h1{
-        margin-top: -10px;
-    }
-}
-@media screen and (max-width:414px){
-    .contenedor{
-        width: 100%;
-        margin: 20px 0;
-    }
-    .contenedor h1{
-        margin-top: -10px;
-    }
-}/* CSS Document */
-
